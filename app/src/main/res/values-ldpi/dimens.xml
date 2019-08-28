@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="check_circle">150dp</dimen>
+    <dimen name="margin_top">64dp</dimen>
+    <dimen name="popup_window_height">120dp</dimen>
+    <dimen name="spinner_font">10sp</dimen>
+    <dimen name="font_last_user_title">13sp</dimen>
+    <dimen name="font_last_user_details">10sp</dimen>
+</resources>

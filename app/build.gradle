@@ -1,0 +1,88 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: "kotlin-kapt"
+
+apply from: rootProject.file("versions.gradle")
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+    defaultConfig {
+        applicationId "dev.sunnat629.barcodescan"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // android architecture components
+    implementation "androidx.appcompat:appcompat:${versions.appcompat}"
+    implementation "androidx.lifecycle:lifecycle-extensions:${versions.extensions}"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.viewmodelKtx}"
+    implementation "androidx.lifecycle:lifecycle-livedata-core:${versions.livedataCore}"
+
+    // androidx & ktx
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlin}"
+    implementation "androidx.core:core-ktx:${versions.ktx}"
+    implementation "androidx.core:core:${versions.androidxCore}"
+
+    // UI
+    implementation "com.google.android.material:material:${versions.material}"
+    implementation "androidx.constraintlayout:constraintlayout:${versions.constraintlayout}"
+
+    // retrofit2 & okhttp3
+    implementation "com.squareup.okhttp3:okhttp:${versions.okhttp}"
+    implementation "com.squareup.okhttp3:logging-interceptor:${versions.okhttp}"
+
+    implementation "com.squareup.retrofit2:retrofit:${versions.retrofit}"
+    implementation "com.squareup.retrofit2:converter-gson:${versions.retrofit}"
+
+    // coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.coroutines}"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.coroutines}"
+    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:${versions.coroutinesAdapter}"
+
+    // logger
+    implementation "com.jakewharton.timber:timber:${versions.timber}"
+
+    // Anko - for toast
+    implementation "org.jetbrains.anko:anko-commons:${versions.anko}"
+
+    // dagger
+    kapt "com.google.dagger:dagger-compiler:${versions.dagger}"
+    kapt "com.google.dagger:dagger-android-processor:${versions.dagger}"
+    implementation "com.google.dagger:dagger-android-support:${versions.dagger}"
+
+    // QRcode scan
+    implementation 'com.dlazaro66.qrcodereaderview:qrcodereaderview:2.0.3'
+
+    // testing
+    testImplementation "junit:junit:${versions.junit}"
+    testImplementation "androidx.test.ext:junit:${versions.testExtJunit}"
+    testImplementation "androidx.test:rules:${versions.testCore}"
+    testImplementation "androidx.test:runner:${versions.testCore}"
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:${versions.nhaarman_mockitokotlin2}"
+    androidTestImplementation "androidx.test.espresso:espresso-core:${versions.espresso}"
+    androidTestImplementation "androidx.test.ext:junit:${versions.testExtJunit}"
+    androidTestImplementation "androidx.test:core:${versions.testCore}"
+    androidTestImplementation "androidx.test:rules:${versions.testCore}"
+    androidTestImplementation "androidx.test:runner:${versions.testCore}"
+
+    implementation 'com.google.android.gms:play-services-base:16.1.0'
+    implementation 'com.google.android.gms:play-services-vision:17.0.2'
+}
